@@ -5,6 +5,7 @@ import TopBar from "./TopBar";
 import Hero from "./Hero";
 
 import DestinationBarParent from "./DestinationBarParent";
+import WorldVisaParent from "./WorldVisaParent";
 
 const Layout = () => {
   return (
@@ -12,6 +13,7 @@ const Layout = () => {
       <TopBar />
       <Hero />
       <DestinationBarParent />
+      <WorldVisaParent />
     </div>
   );
 };
