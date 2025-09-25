@@ -12,25 +12,7 @@ import country1 from "../../../public/images/country1.png";
 import country2 from "../../../public/images/country2.png";
 import country3 from "../../../public/images/country3.png";
 import country4 from "../../../public/images/country4.png";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
-const NextArrow = ({ onClick }) => (
-  <div
-    onClick={onClick}
-    className="absolute top-1/2 -right-10 transform -translate-y-1/2 z-10 bg-[#FF6B11] text-white p-2 rounded-full cursor-pointer hover:bg-black transition duration-300"
-  >
-    <ArrowRight />
-  </div>
-);
-
-const PrevArrow = ({ onClick }) => (
-  <div
-    onClick={onClick}
-    className="absolute top-1/2 -left-10  transform -translate-y-1/2 z-10 bg-[#FF6B11] text-white p-2 rounded-full cursor-pointer hover:bg-black transition duration-300"
-  >
-    <ArrowLeft />
-  </div>
-);
 
 const settings = {
   dots: false,
@@ -39,8 +21,9 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   arrows: true,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
+  autoplay: true, // ✅ Enables auto sliding
+  autoplaySpeed: 3000, // ✅ Time between slides in ms
+
   responsive: [
     {
       breakpoint: 1024,

@@ -8,6 +8,7 @@ import DestinationBarParent from "./DestinationBarParent";
 import WorldVisaParent from "./WorldVisaParent";
 import Footer from "../Footer";
 import BestHolodaypackges from "./BestHolodaypackges";
+import PartnerSlider from "./PartnerSlider";
 
 const Layout = () => {
   return (
@@ -17,6 +18,7 @@ const Layout = () => {
       <DestinationBarParent />
       <WorldVisaParent />
       <BestHolodaypackges />
+      <PartnerSlider />
       <Footer />
     </div>
   );

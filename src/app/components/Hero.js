@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
-    <section className="w-full h-screen object-cover relative">
+    <section className="w-full sm:h-screen h-80 object-cover relative">
       <Image
         src={hero}
         alt="Hero Banner"
