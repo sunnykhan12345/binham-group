@@ -9,6 +9,7 @@ import WorldVisaParent from "./WorldVisaParent";
 import Footer from "../Footer";
 import BestHolodaypackges from "./BestHolodaypackges";
 import PartnerSlider from "./PartnerSlider";
+import ClientWords from "./ClientWords";
 
 const Layout = () => {
   return (
@@ -18,6 +19,7 @@ const Layout = () => {
       <DestinationBarParent />
       <WorldVisaParent />
       <BestHolodaypackges />
+      <ClientWords />
       <PartnerSlider />
       <Footer />
     </div>
