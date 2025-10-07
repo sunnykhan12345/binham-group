@@ -52,7 +52,7 @@ const VisaCountrySlider = () => {
   return (
     <section className="">
       <div className="flex justify-between items-center pb-9">
-        <h1 className="text-[38px] font-semibold">WorldWide Visas</h1>
+        <h1 className="lg:text-[38px] md:text-3xl text-2xl font-semibold">WorldWide Visas</h1>
         <Link
           href="#"
           className="text-[22px] font-semibold text-[#FF6B11] border-b hover:text-black transition-all duration-500"
