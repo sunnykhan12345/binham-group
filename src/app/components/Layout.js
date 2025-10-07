@@ -10,6 +10,7 @@ import Footer from "../Footer";
 import BestHolodaypackges from "./BestHolodaypackges";
 import PartnerSlider from "./PartnerSlider";
 import ClientWords from "./ClientWords";
+import TopDestinationsSlider from "./TopDestinationsSlider";
 
 const Layout = () => {
   return (
@@ -19,6 +20,7 @@ const Layout = () => {
       <DestinationBarParent />
       <WorldVisaParent />
       <BestHolodaypackges />
+      <TopDestinationsSlider />
       <ClientWords />
       <PartnerSlider />
       <Footer />

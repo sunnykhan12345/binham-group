@@ -1,68 +1,86 @@
 "use client";
 import Image from "next/image";
 
-// Mock testimonial data
-const testimonials = [
-  {
-    name: "Emma Rodriguez",
-    review:
-      "Fantastic service! They really went above and beyond. Highly recommend.",
-    rating: 5,
-  },
-  {
-    name: "Liam Johnson",
-    review:
-      "Very professional and timely. The team was responsive and helpful.",
-    rating: 4,
-  },
-  {
-    name: "Olivia Smith",
-    review: "A smooth experience from start to finish. Will use again!",
-    rating: 5,
-  },
-  {
-    name: "Noah Brown",
-    review:
-      "I faced a few issues initially, but support helped resolve them quickly.",
-    rating: 4,
-  },
-  {
-    name: "Ava Martinez",
-    review: "Super impressed with the design and functionality. Great job!",
-    rating: 5,
-  },
-  {
-    name: "Elijah Garcia",
-    review: "Affordable and effective. Great value for money.",
-    rating: 3,
-  },
-  {
-    name: "Sophia Lee",
-    review: "Team communication was top-notch. Everything was well explained.",
-    rating: 5,
-  },
-  {
-    name: "James Davis",
-    review: "Love the UI/UX experience. Will definitely recommend to peers.",
-    rating: 4,
-  },
-];
+// ✅ Testimonial Card Component
+function TestimonialCard({
+  name,
+  review,
+  rating,
+  image,
+  extraClass = "",
+  showReviewImages = false,
+}) {
+  return (
+    <div
+      className={`bg-white rounded-xl p-6 [box-shadow:0px_9px_20px_0px_#00000040] h-fit ${extraClass}`}
+    >
+      <div className="flex space-x-3.5 mb-4">
+        {/* User Image */}
+        {image && (
+          <div className="mb-3">
+            <Image
+              src={image}
+              alt={name}
+              width={33}
+              height={33}
+              className="rounded-full object-cover"
+            />
+          </div>
+        )}
 
-// Optional margin class for staggered layout
-const getMarginClass = (index) => {
-  const marginClasses = [
-    "", // index 0
-    "mt-20", // index 1
-    "-mt-10", // index 2
-    "mt-10", // index 3
-    "mt-20", // index 4
-    "-mt-10", // index 5
-    "mt-10", // index 6
-    "mt-20", // index 7
-  ];
-  return marginClasses[index] || "";
-};
+        {/* Name and Stars */}
+        <div className="">
+          <p className="text-lg font-semibold m-0">{name}</p>
+          <div className="flex mt-1">
+            {[...Array(rating)].map((_, i) => (
+              <svg
+                key={i}
+                viewBox="0 0 24 24"
+                className="w-3 h-3 fill-[#ff6b11] mr-1"
+              >
+                <path d="M12 17.25l-6.16 3.73 1.64-7.03L2.5 9.77l7.19-.61L12 2.5l2.31 6.66 7.19.61-5 4.18 1.64 7.03z" />
+              </svg>
+            ))}
+          </div>
+        </div>
+      </div>
 
+      {/* Review Text */}
+      <p className="text-gray-600 text-sm mb-4">{review}</p>
+
+      {/* Optional Review Images */}
+      {showReviewImages && (
+        <div className="flex gap-2">
+          <div className="flex flex-col gap-2">
+            <Image
+              src="/images/review.png"
+              alt="Review 1"
+              width={100}
+              height={93}
+              className="rounded-md object-cover"
+            />
+            <Image
+              src="/images/review1.png"
+              alt="Review 2"
+              width={100}
+              height={93}
+              className="rounded-md object-cover"
+            />
+          </div>
+          <Image
+            src="/images/review2.png"
+            alt="Review Tall"
+            width={105}
+            height={197}
+            className="rounded-md object-cover"
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ✅ Main ClientWords Section
 export default function ClientWords() {
   return (
     <section className="pt-20 max-w-[1296px] mx-auto px-4">
@@ -74,77 +92,68 @@ export default function ClientWords() {
         </a>
       </div>
 
-      {/* Cards */}
-      <div className="flex flex-wrap gap-5">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className={`bg-white rounded-xl p-6 shadow-md max-w-[300px] h-fit ${getMarginClass(
-              index
-            )}`}
-          >
-            {/* User Info */}
-            <div className="flex items-center gap-3">
-              <Image
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
-                alt="User"
-                width={48}
-                height={48}
-                className="rounded-full object-cover"
-                unoptimized
-              />
-              <div>
-                <p className="text-lg font-semibold m-0">{testimonial.name}</p>
-                <div className="flex">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      viewBox="0 0 24 24"
-                      className="w-3 h-3 fill-[#ff6b11] mr-1"
-                    >
-                      <path d="M12 17.25l-6.16 3.73 1.64-7.03L2.5 9.77l7.19-.61L12 2.5l2.31 6.66 7.19.61-5 4.18 1.64 7.03z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Review Text */}
-            <p className="mt-4 text-gray-600 text-sm">{testimonial.review}</p>
-
-            {/* Show images only on the last card (index === 7) */}
-            {index === 7 && (
-              <div className="flex gap-2 mt-3">
-                {/* Two stacked small images */}
-                <div className="flex flex-col gap-2">
-                  <Image
-                    src="/images/review.png"
-                    alt="Review"
-                    width={100}
-                    height={93}
-                    className="rounded-md object-cover"
-                  />
-                  <Image
-                    src="/images/review1.png"
-                    alt="Review"
-                    width={100}
-                    height={93}
-                    className="rounded-md object-cover"
-                  />
-                </div>
-
-                {/* One tall image */}
-                <Image
-                  src="/images/review2.png"
-                  alt="Review"
-                  width={105}
-                  height={197}
-                  className="rounded-md object-cover"
-                />
-              </div>
-            )}
-          </div>
-        ))}
+      {/* Grid of Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <TestimonialCard
+          name="Emma Rodriguez"
+          review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          rating={5}
+          image="/images/user.png"
+          showReviewImages={true}
+        />
+        <TestimonialCard
+          name="Liam Johnson"
+          review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          rating={4}
+          image="/images/user.png"
+          extraClass="mt-20"
+          showReviewImages={true}
+        />
+        <TestimonialCard
+          name="Olivia Smith"
+          review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          rating={5}
+          image="/images/user.png"
+          extraClass="-mt-10"
+        />
+        <TestimonialCard
+          name="Noah Brown"
+          review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          rating={4}
+          image="/images/user.png"
+          extraClass="mt-10"
+          showReviewImages={true}
+        />
+        <TestimonialCard
+          name="Ava Martinez"
+          review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          rating={5}
+          image="/images/user.png"
+          extraClass="mt-20"
+        />
+        {/* <TestimonialCard
+          name="Elijah Garcia"
+          review="Affordable and effective. Great value for money."
+          rating={3}
+          image="/images/user.png"
+          extraClass="-mt-10"
+        /> */}
+        <TestimonialCard
+          name="Sophia Lee"
+          review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          rating={5}
+          image="/images/user.png"
+          extraClass="mt-10"
+        />
+        
+        <TestimonialCard
+          name="James Davis"
+          review="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          rating={4}
+          image="/images/user.png"
+          extraClass="-mt-82"
+          showReviewImages={true}
+        />
       </div>
     </section>
   );
