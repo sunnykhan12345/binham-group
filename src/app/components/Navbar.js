@@ -103,7 +103,7 @@ import ContactButton from "./ContactButton";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Destinations", href: "/destinationouts" },
+  { name: "Destinations", href: "/destination" },
   { name: "Domestic", href: "/domestic" },
   { name: "International", href: "/international" },
   { name: "Umrah", href: "/umrah" },
